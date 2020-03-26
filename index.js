@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000 ;
 
   // DB Connection____________________________________________
 
-const uri =  process.env.ATLAS_URI;
+/* const uri =  process.env.ATLAS_URI; */
 const uri =  'mongodb+srv://AndrewDev:dev1234@cluster0-gi7lg.mongodb.net/Tickets_Knestyapp?retryWrites=true&w=majority';
 var options = {
     useCreateIndex: true,
