@@ -6,7 +6,7 @@ const express = require('express')
 const path = require('path')
 require('dotenv').config();
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8080 ;
 
 
   // DB Connection____________________________________________
@@ -27,10 +27,8 @@ connection.once('connected', ()=>{
 
 //__________________________________________________________________________
 
-const visit_router   = require('./src/routers/visit.router')
-const patient_router = require('./src/routers/patient.router');
-const servant_router = require('./src/routers/servant.router');
-const hospital_router = require('./src/routers/hospital.router');
+
+const ticket_router = require('./src/routers/ticket.router');
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -42,10 +40,8 @@ express()
   .get('/cool', (req, res) => res.send(cool()))
 
   .use(bodyParser.json())
-  .use('/visits',visit_router)
-  .use('/patients',patient_router)
-  .use('/servants',servant_router)
-  .use('/hospitals',hospital_router)
+  
+  .use('/tickets',ticket_router)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
   
