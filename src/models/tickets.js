@@ -42,18 +42,18 @@ const ticket_schema=new mongoose.Schema({
     },
     name :{ 
       type : String,
-      require: true,
+      require: false,
       trim:true,
     },
       email :{ 
         type : String,
-        require: true,
+        require: false,
         trim:true,
       },
       
       phone :{ 
         type : String,
-        require: true,
+        require: false,
         trim:true,
       },
 
