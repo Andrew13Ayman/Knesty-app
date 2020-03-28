@@ -37,10 +37,12 @@ router.post('/add',(req,res)=>{
     if(!typeIDval){
         res.status(400).send('Error : TypeID(1 or 2 ) 1 : suggestion -  2:complaint ')
     }
+      if(Body.phone){
+           if(Body.phone.length !== 11 && Body.phone[0] !== 1)
+            {  return res.status(400).send('phone number should be 11 number must begin with 01');  }
 
-    if(Body.phone.length !== 11 && Body.phone[0] !== 1)
-    {  return res.status(400).send('phone number should be 11 number must begin with 01');  }
-
+      }
+   
     const typeID = Body.typeID
     const subject = Body.subject
     const body = Body.body
