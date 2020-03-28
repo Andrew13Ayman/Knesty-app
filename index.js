@@ -5,6 +5,7 @@ const cool = require('cool-ascii-faces')
 const express = require('express')
 const path = require('path')
 require('dotenv').config();
+var cors = require ('cors');
 
 const PORT = process.env.PORT || 5000 ;
 
@@ -37,9 +38,19 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .engine('html', require('ejs').renderFile)
   .set('view engine', 'html')
-  /* .set('view engine', 'ejs') */
+  
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (req, res) => res.send(cool()))
+
+  .use(cors())
+  .use(function (req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', true);
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    next();
+  })
 
   .use(bodyParser.json())
   
